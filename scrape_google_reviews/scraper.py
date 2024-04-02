@@ -35,8 +35,10 @@ class DataLoader:
     def create_reviews_df(self)->pd.DataFrame:
         # Get a list of all of the reviews
         reviews = self.driver.find_elements(By.XPATH, "//div[@data-review-id]")
-        print(f'the type of each review is: {type(reviews[0])}')
-
+        wait = WebDriverWait(self.driver, 10)
+        #import pdb
+        #pdb.set_trace()
+        #print(f'the type of each review is: {type(reviews[0])}')
         for review in reviews:
             review_text = review.find_element(By.XPATH, f".//span[contains(@class, '{Review.TEXT.value}')]").text
             review_rating = review.find_element(By.XPATH, f".//span[contains(@class, '{Review.STARS.value}')]").get_attribute('aria-label')
@@ -46,9 +48,11 @@ class DataLoader:
             self.df = pd.concat([self.df, row], ignore_index=True)
 
     
-    def get_reviews_df(self):
+    def get_reviews_df(self)-> pd.DataFrame:
         """
         all of the process
         """
         # TODO: didn't implement yet
-        pass
+        self.navigate()
+        self.create_reviews_df()
+        return self.df
