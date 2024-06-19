@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 import time
 from bs4 import BeautifulSoup
+import pandas as pd
 
 class GoogleReviewsScraper:
     def __init__(self, url):
@@ -19,16 +20,21 @@ class GoogleReviewsScraper:
         driver.get(self.url)
         return driver
 
+
+
     def translate_page_to_english(self):
         try:
-            wait = time.sleep(5)
+            time.sleep(5)
+            wait = WebDriverWait(self.driver, 1)
             menu_xpath = '//*[@id="QA0Szd"]/div/div/div[1]/div[1]/ul/li[1]/button/div'
             menu_xpath = wait.until(EC.element_to_be_clickable((By.XPATH, menu_xpath)))
             menu_xpath.click()
+            time.sleep(5)
             wait = WebDriverWait(self.driver, 1)
             lan = '//*[@id="settings"]/div/div[2]/ul/div[7]/li[1]/button'
             language_button = wait.until(EC.element_to_be_clickable((By.XPATH, lan)))
             language_button.click()
+            time.sleep(5)
             wait = WebDriverWait(self.driver, 1)
 
             # Click on the English language
@@ -58,27 +64,50 @@ class GoogleReviewsScraper:
             expand_more_buttons(self.driver)
             time.sleep(1)
 
+
     def retrieve_google_reviews(self):
-        reviews = []
+        # Assuming driver.page_source contains the HTML source of the page with reviews
         html_content = self.driver.page_source
         response = BeautifulSoup(html_content, 'html.parser')
-        review_elements = response.find_all('div', class_='jJc9Ad')
-        for review_element in review_elements:
-            review_text = "No review text found"
-            try:
-                review_text_div = review_element.find('div', class_='MyEned')
-                if review_text_div:
-                    review_text_span = review_text_div.find('span', class_='wiI7pd')
-                    if review_text_span:
-                        review_text = review_text_span.text
-            except:
-                print("Couldn't locate")
-            reviews.append(review_text)
-        #review_rating = response.find_all('div', class_='jJc9Ad')(By.XPATH, f".//span[contains(@class, '{Review.STARS.value}')]").get_attribute('aria-label')
+        reviews = response.find_all('div', class_='jJc9Ad')
 
+        review_data = []
+        for review in reviews:
+            review_text = "No review text found"
+            stars = "No rating found"
+            time = "No time found"
+
+            review_text_div = review.find('div', class_='MyEned')
+            if review_text_div:
+                review_text_span = review_text_div.find('span', class_='wiI7pd')
+                if review_text_span:
+                    review_text = review_text_span.text
+
+            stars_span = review.find('span', class_='fzvQIb')
+            if stars_span:
+                stars = stars_span.text[0]
+
+            # time_span = review.find('span', class_='xRkPPb')
+            time_span = review.find('span', class_='rsqaWe')
+            if time_span:
+                time = time_span.text
+            else:
+                time_span = review.find('span', class_='xRkPPb')
+                if time_span:
+                    time = time_span.text
+             
+
+            review_data.append({'text': review_text, 'stars': stars, 'time': time})
+
+        # Create a DataFrame from the review_data list
+        df_reviews = pd.DataFrame(review_data)
+
+        # remove empty reviews
+        df_reviews = df_reviews[df_reviews['text'] != "No review text found"]
 
         self.driver.quit()
-        return reviews
+        return df_reviews
+ 
     
 
     
