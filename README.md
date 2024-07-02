@@ -1,17 +1,11 @@
 # Bridezilla_NLP
+Bridezilla_NLP is a project designed to compare two businesses (such as hotels or museums) based on data from Google reviews. The goal is to extract unique positive and negative aspects for each place from these reviews. This project utilizes an agent implemented with the LangGraph library and an LLM named Llama 3.
 
-## Project Idea
-Bridezilla_NLP aims to compare two businesses (such as hotels, restaurants, etc.) by extracting their positive and negative characteristics. The goal is to create a tool that highlights their unique features.
-
-## The Process
-### STEP 1: Scrape Reviews
-Scraping reviews can be a challenging and time-consuming task. We used Selenium, a powerful browser automation tool, to automate the process of collecting reviews from various sources.
-
-### STEP 2: Summarize Reviews
-The collected reviews are loaded into a DataFrame. Each review is then summarized using BART (Bidirectional and Auto-Regressive Transformers) to distill the essence of the feedback.
-
-### STEP 3: Analyze Reviews
-All summarized reviews are concatenated into a single DataFrame and analyzed using LLaMA3 (Large Language Model Meta AI) with different prompts to extract meaningful insights.
-
-### STEP 4: Automate with LangChain
-A LangChain Agent is created to automate all the steps, ensuring a seamless and efficient workflow.
+# Table of Contents
+* Project Overview
+* Features
+Installation
+Usage
+Project Structure
+Contributing
+License
