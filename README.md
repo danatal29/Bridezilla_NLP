@@ -8,7 +8,7 @@ Bridezilla_NLP is a project designed to compare two businesses (such as hotels o
 * Project Structure
 
 # Features
-*Review Scraping*: Collect reviews from Google for the specified businesses.
+**Review Scraping**: Collect reviews from Google for the specified businesses.
 Review Summarization: Summarize the collected reviews to capture the essence of user feedback.
 Comparison Analysis: Identify and compare the unique positive and negative aspects of each business.
 Agent Integration: Utilize an agent implemented with the LangGraph library for scraping and summarization tasks.
