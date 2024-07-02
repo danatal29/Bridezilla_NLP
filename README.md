@@ -4,17 +4,11 @@ Bridezilla_NLP is a project designed to compare two businesses (such as hotels o
 
 ## Table of Contents
 
-- [Project Overview](#project-overview)
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
 
-## Project Overview
-
-The Bridezilla_NLP project aims to provide insights into the unique positive and negative characteristics of two businesses by analyzing their Google reviews. The process involves scraping the reviews, summarizing them, and using natural language processing techniques to highlight the distinct features of each business.
 
 ## Features
 
@@ -108,16 +102,6 @@ Example usage:
     │   ├── summarization/      # Summarization scripts
     │   └── analysis/           # Analysis scripts using Llama 3
     │
-    ├── tests/                  # Unit tests
-    │
     ├── README.md
     └── requirements.txt        # Project dependencies
     ```
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a pull request or open an issue to discuss what you would like to change.
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
