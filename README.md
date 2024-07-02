@@ -6,7 +6,6 @@ Bridezilla_NLP is a project designed to compare two businesses (such as hotels o
 
 - [Features](#features)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Project Structure](#project-structure)
 
 
@@ -54,40 +53,6 @@ To install and run the project, follow these steps:
     Detailed setup instructions for LangGraph can be found [here](#).
     Detailed setup instructions for Llama 3 can be found [here](#).
 
-## Usage
-
-To use the Bridezilla_NLP project, follow these steps:
-
-1. **Scrape Reviews:** Use the agent to scrape reviews from Google for the two businesses you want to compare.
-2. **Summarize Reviews:** The agent will summarize the scraped reviews.
-3. **Analyze Reviews:** Insert the summarized reviews into the Llama 3 model to analyze and compare the unique aspects of each business.
-
-Example usage:
-
-    ```python
-    from langgraph import LangGraph
-    from llama3 import Llama3
-
-    # Define the scrape and summarize functions
-    def scrape_function(url):
-        # Implement scraping logic here
-        pass
-
-    def summarize_function(reviews):
-        # Implement summarization logic here
-        pass
-
-    # Initialize the agent with LangGraph
-    agent = LangGraph(scrape_function, summarize_function)
-
-    # Scrape and summarize reviews
-    reviews_summary = agent.process(url1, url2)
-
-    # Analyze reviews with Llama 3
-    analysis = Llama3.analyze(reviews_summary)
-    print(analysis)
-    ```
-
 ## Project Structure
 
     ```bash
@@ -97,10 +62,9 @@ Example usage:
     │   ├── raw/                # Raw data from scraping
     │   └── processed/          # Processed and summarized data
     │
-    ├── src/
-    │   ├── scraping/           # Scraping scripts
-    │   ├── summarization/      # Summarization scripts
-    │   └── analysis/           # Analysis scripts using Llama 3
+    ├── scraping/           # Scraping scripts
+    │── summarization/      # Summarization scripts
+    │── analysis/           # Analysis scripts using Llama 3
     │
     ├── README.md
     └── requirements.txt        # Project dependencies
