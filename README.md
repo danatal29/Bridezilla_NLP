@@ -45,10 +45,6 @@ To install and run the project, follow these steps:
      "langchain_api_key": "your_langchain_token"
    }
 
-4. Set up the LangGraph library and Llama 3:
-
-    Detailed setup instructions for LangGraph can be found [here](#).
-    Detailed setup instructions for Llama 3 can be found [here](#).
 
 ## Project Structure
 
