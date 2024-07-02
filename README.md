@@ -34,21 +34,17 @@ To install and run the project, follow these steps:
     pip install -r requirements.txt
     ```
 
-3. Set up environment variables for OpenAI and Hugging Face:
+3. Set up environment variables for OpenAI, Hugging Face and LangChain:
 
-    Add your OpenAI key:
+   Set up a file named keys.json with the following format:
+   
+   {
+  "openai_api_key": "your_openai_key",
+  "huggingface_token": "your_huggingface_token",
+  "langchain_api_key": "your_langchain_token"
+   }
 
-    ```bash
-    export OPENAI_API_KEY='your_openai_key'
-    ```
-
-    Add your Hugging Face token:
-
-    ```bash
-    export HUGGINGFACE_TOKEN='your_huggingface_token'
-    ```
-
-4. Set up the LangGraph library and Llama 3:
+5. Set up the LangGraph library and Llama 3:
 
     Detailed setup instructions for LangGraph can be found [here](#).
     Detailed setup instructions for Llama 3 can be found [here](#).
