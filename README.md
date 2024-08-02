@@ -33,7 +33,7 @@ To install and run the project, follow these steps:
    ``` python
     !git clone https://github.com/danatal29/Bridezilla_NLP.git /content/drive/MyDrive/Bridezilla_NLP
    ```
-3. Navigate to the cloned project run Bridezilla_Notebook.ipynb
+3. Navigate to the cloned project and run Bridezilla_Notebook.ipynb
 4. Set up environment variables for OpenAI, Hugging Face and LangChain:
    Set up a file named `keys.json` with the following format:
 
