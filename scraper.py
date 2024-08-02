@@ -44,7 +44,7 @@ class GoogleReviewsScraper:
             )
             anchor_element.click()
         except Exception as e:
-            print(e)
+            print("")
 
     def scroll_down_google_reviews(self, total_number_of_reviews=50):
         def expand_more_buttons(driver):
@@ -54,7 +54,7 @@ class GoogleReviewsScraper:
                     driver.execute_script("arguments[0].scrollIntoView();", button)
                     WebDriverWait(driver, 5).until(EC.element_to_be_clickable(button)).click()
                 except Exception as e:
-                    print("Could not click on a 'More' button:", e)
+                    #print("Could not click on a 'More' button:", e)
                     continue
 
         time.sleep(10)
